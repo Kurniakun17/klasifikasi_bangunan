@@ -1,5 +1,5 @@
 import { Button } from '@/components/ui/button';
-import React from 'react';
+
 import { useNavigate } from 'react-router-dom';
 
 const Panduan = () => {
@@ -8,7 +8,7 @@ const Panduan = () => {
   return (
     <div className="min-h-screen m-auto px-12 flex flex-col justify-center items-center gap-5">
       <Button
-        className="absolute font-semibold text-lg top-10 left-10 bg-white hover:bg-gray-300 text-gray-800"
+        className="fixed font-semibold text-lg top-10 left-10 bg-white hover:bg-gray-300 text-gray-800"
         onClick={() => navigate('/home')}
       >
         <p className="text-black">{'< Back'}</p>

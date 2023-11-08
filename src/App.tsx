@@ -3,6 +3,7 @@ import Home from './screen/Home';
 import Predict from './screen/Predict';
 import Tentang from './screen/Tentang';
 import Panduan from './screen/Panduan';
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/panduan" element={<Panduan />} />
         <Route path="*" element={<Navigate to={'/home'} />} />
       </Routes>
+      <ToastContainer/>
     </div>
   );
 };

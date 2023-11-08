@@ -7,7 +7,7 @@ const Tentang = () => {
   return (
     <div className="min-h-screen m-auto max-w-[600px] px-12 flex flex-col justify-center items-center gap-5">
       <Button
-        className="absolute top-10 left-10 font-semibold text-lg bg-white hover:bg-gray-300 text-gray-800"
+        className="fixed top-10 left-10 font-semibold text-lg bg-white hover:bg-gray-300 text-gray-800"
         onClick={() => navigate('/home')}
       >
         <p className="text-black">{'< Back'}</p>
