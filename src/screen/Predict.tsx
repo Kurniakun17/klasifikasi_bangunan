@@ -2,9 +2,10 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { submitData } from '@/utils/api';
 import { Hasil, deskripsiHasil } from '@/utils/misc';
-import { Loader2 } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
 
 import { useState } from 'react';
+import ReactPaginate from 'react-paginate';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
@@ -13,6 +14,7 @@ const Predict = () => {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState('');
   const navigate = useNavigate();
+  const [offset, setOffset] = useState(0);
 
   const onSubmitClickHandler = async () => {
     if (file !== null) {
@@ -33,6 +35,10 @@ const Predict = () => {
         setLoading(false);
       }
     }
+  };
+
+  const onPageHandleClick = (obj: { selected: number }) => {
+    setOffset(obj.selected);
   };
 
   return (
@@ -94,33 +100,36 @@ const Predict = () => {
           <h2 className="font-semibold text-center">RESULT</h2>
           <h3 className="text-center font-bold text-2xl mb-2"> {result}</h3>
           <p className="">{deskripsiHasil[result.toLowerCase() as Hasil]}</p>
-          <div className="flex flex-col gap-4 mt-4">
+          <div className="flex flex-col gap-4 mt-8">
             <h3 className="font-semibold text-center">Gambar yang serupa</h3>
-            <img
-              className="aspect-video"
-              src={`/${result.toLowerCase()}_1.jpg`}
-              alt=""
-            />
-            <img
-              className="aspect-video"
-              src={`/${result.toLowerCase()}_2.jpg`}
-              alt=""
-            />
-            <img
-              className="aspect-video"
-              src={`/${result.toLowerCase()}_3.jpg`}
-              alt=""
-            />
-            <img
-              className="aspect-video"
-              src={`/${result.toLowerCase()}_4.jpg`}
-              alt=""
-            />
-            <img
-              className="aspect-video"
-              src={`/${result.toLowerCase()}_5.jpg`}
-              alt=""
-            />
+            <div className="grid grid-cols-4 gap-4 mb-2">
+              {Array.from({ length: 8 }, (_, i) => offset * 8 + i).map(
+                (index) => {
+                  return (
+                    <div className=" bg-slate-400 w-full aspect-video">
+                      <img
+                        key={`${index} image`}
+                        className="aspect-video"
+                        src={`/${result.toLowerCase()} (${index + 1}).jpg`}
+                        alt=""
+                      />
+                    </div>
+                  );
+                }
+              )}
+            </div>
+            <ReactPaginate
+              previousLabel={<ChevronLeft color="#66748c" />}
+              nextLabel={<ChevronRight color="#66748c" />}
+              pageCount={5}
+              breakLabel="..."
+              onPageChange={onPageHandleClick}
+              containerClassName="flex gap-3 w-fit mx-auto"
+              pageClassName="bg-white rounded-md border font-bold"
+              nextClassName="bg-white text-slate-200 border rounded-md font-bold"
+              previousClassName="bg-white text-slate-200 border rounded-md font-bold "
+              activeClassName="border active text-red-500 border-blue-500"
+            ></ReactPaginate>
           </div>
         </div>
       )}

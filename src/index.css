@@ -78,3 +78,16 @@
     @apply bg-background text-foreground;
   }
 }
+
+li > a {
+  display: flex;
+  padding-top: 4px;
+  height: 32px;
+  width: 32px;
+  justify-content: center;
+  @apply text-slate-500;
+}
+
+.active > a {
+  color: rgb(0, 0, 255) !important;
+}
