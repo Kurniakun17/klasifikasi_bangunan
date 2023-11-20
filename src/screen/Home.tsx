@@ -9,7 +9,7 @@ const Home = () => {
         <h1 className="text-white text-center text-2xl font-bold">
           Klasifikasi Bangunan Bersejarah pada Daerah Jawa dan Sumatra
         </h1>
-        <img className="w-[400px] m-auto py-12" src="AI.svg" alt="" />
+        <img className="w-[400px] m-auto py-12" src="AI.png" alt="" />
         <Button
           onClick={() => navigate('/predict')}
           className="font-semibold text-xl py-6 bg-white hover:bg-gray-300 text-gray-800"

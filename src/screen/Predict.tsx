@@ -106,9 +106,11 @@ const Predict = () => {
               {Array.from({ length: 8 }, (_, i) => offset * 8 + i).map(
                 (index) => {
                   return (
-                    <div className=" bg-slate-400 w-full aspect-video">
+                    <div
+                      key={`${index} image`}
+                      className=" bg-slate-400 w-full aspect-video"
+                    >
                       <img
-                        key={`${index} image`}
                         className="aspect-video"
                         src={`/${result.toLowerCase()} (${index + 1}).jpg`}
                         alt=""
