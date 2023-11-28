@@ -23,9 +23,9 @@ const Predict = () => {
       try {
         setLoading(true);
         const response = await submitData(body);
-        const tempResult = response.slice(18);
+        console.log(response);
         setResult(
-          tempResult === 'keraton jogja' ? 'klaton yogyakarta' : tempResult
+          response === 'keraton jogja' ? 'klaton yogyakarta' : response
         );
         console.log(response);
       } catch (error) {
